@@ -16,9 +16,12 @@ class UserController {
 
   // Create User
   public async create (req: Request, res: Response): Promise<Response> {
-    const user = await User.create(req.body)
-
-    return res.status(201).json({ email: user.email })
+    try {
+      const user = await User.create(req.body)
+      return res.status(201).json({ email: user.email, _id: user._id })
+    } catch (err) {
+      return res.status(400).json({ mensagem: 'Usuário não criado', erro: err })
+    }
   }
 }
 
