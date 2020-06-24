@@ -1,7 +1,10 @@
 import { Request, Response } from 'express'
-
+import bcrypt from 'bcrypt'
+import jwt from 'jwt-simple'
+import dotenv from 'dotenv'
 import User from '../schemas/User'
 
+dotenv.config()
 class UserController {
   // Get user ID
   public async id (req: Request, res: Response): Promise<Response> {
@@ -29,9 +32,19 @@ class UserController {
     try {
       const users = await User.find({ email: req.body.email })
       if (users.length === 0) {
-        return res.status(401).json({ mensagem: 'Usuário não encontrado' })
+        return res.status(401).json({ mensagem: 'Usuário e/ou senha incorretos' })
       }
-      return res.status(200).json(users)
+      bcrypt.compare(req.body.password, users[0].password, function (err, result) {
+        if (result) {
+          const payload = { id: users[0]._id }
+          const token = jwt.encode(payload, process.env.SECRET_JWT, 'HS512')
+          return res.status(200).json({ _id: users[0]._id, email: users[0].email, token: token })
+        } else if (err) {
+          return res.status(401).json({ mensagem: 'Ocorreu um erro' })
+        } else {
+          return res.status(401).json({ mensagem: 'Usuário e/ou senha incorretos' })
+        }
+      })
     } catch (err) {
       return res.status(401).json({ mensagem: 'Ocorreu um problema', erro: err })
     }

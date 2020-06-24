@@ -24,6 +24,7 @@ const UserSchema = new Schema({
 })
 
 UserSchema.pre<UserInterface>('save', async function (next) {
+  if (!this.isModified('password')) return next()
   try {
     // Criptografa a senha
     this.password = await bcrypt.hash(this.password, 12)
