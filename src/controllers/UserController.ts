@@ -36,7 +36,7 @@ class UserController {
       }
       bcrypt.compare(req.body.password, users[0].password, function (err, result) {
         if (result) {
-          const payload = { id: users[0].email }
+          const payload = { id: users[0]._id }
           const token = jwt.encode(payload, process.env.SECRET_JWT)
           return res.status(200).json({ _id: users[0]._id, email: users[0].email, token: token })
         } else if (err) {
