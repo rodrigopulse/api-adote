@@ -26,7 +26,8 @@ class App {
     const host = process.env.DB_HOST
     mongoose.connect(`mongodb+srv://${user}:${password}@${host}`, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useCreateIndex: true
     })
   }
 

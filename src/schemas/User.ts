@@ -9,7 +9,13 @@ interface UserInterface extends Document {
 }
 
 const UserSchema = new Schema({
-  email: String,
+  email: {
+    type: String,
+    required: true,
+    index: {
+      unique: true
+    }
+  },
   firstName: String,
   lastName: String,
   password: String
@@ -19,6 +25,7 @@ const UserSchema = new Schema({
 
 UserSchema.pre<UserInterface>('save', async function (next) {
   try {
+    // Criptografa a senha
     this.password = await bcrypt.hash(this.password, 12)
     return next()
   } catch (err) {

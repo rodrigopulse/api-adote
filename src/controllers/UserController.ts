@@ -23,6 +23,19 @@ class UserController {
       return res.status(400).json({ mensagem: 'Usuário não criado', erro: err })
     }
   }
+
+  // Login
+  public async login (req: Request, res: Response): Promise<Response> {
+    try {
+      const users = await User.find({ email: req.body.email })
+      if (users.length === 0) {
+        return res.status(401).json({ mensagem: 'Usuário não encontrado' })
+      }
+      return res.status(200).json(users)
+    } catch (err) {
+      return res.status(401).json({ mensagem: 'Ocorreu um problema', erro: err })
+    }
+  }
 }
 
 export default new UserController()
