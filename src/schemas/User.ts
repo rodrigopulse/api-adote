@@ -1,5 +1,5 @@
 import { Schema, Document, model } from 'mongoose'
-
+import bcrypt from 'bcrypt'
 interface UserInterface extends Document {
   email?: string
   firstName?: string,
@@ -15,6 +15,15 @@ const UserSchema = new Schema({
   password: String
 }, {
   timestamps: true
+})
+
+UserSchema.pre<UserInterface>('save', async function (next) {
+  try {
+    this.password = await bcrypt.hash(this.password, 12)
+    return next()
+  } catch (err) {
+    return next(err)
+  }
 })
 
 UserSchema.methods.fullName = function (): string {
