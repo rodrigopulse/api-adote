@@ -19,3 +19,13 @@ No ambiente de dev, após instalado os módulos com o comando yarn, basta rodar 
 Para gerar o pacote de produção, rode o comando
 
 `yarn build`
+
+## Rotas
+
+### Users
+
+| Rota          | Método | Descrição                                     |
+| ------------- | ------ | --------------------------------------------- |
+| /users/:id    | GET    | Lista o usuário pelo id                       |
+| /users/create | POST   | Cria o usuário                                |
+| /users/login  | POST   | Faz o login do usuário e responde com o token |

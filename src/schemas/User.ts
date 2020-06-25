@@ -5,6 +5,8 @@ interface UserInterface extends Document {
   firstName?: string,
   lastName?: string,
   password?: string,
+  imagem?: string,
+  pageId?:string,
   fullName(): string
 }
 
@@ -18,7 +20,9 @@ const UserSchema = new Schema({
   },
   firstName: String,
   lastName: String,
-  password: String
+  password: String,
+  image: String,
+  pageId: String
 }, {
   timestamps: true
 })
