@@ -11,7 +11,13 @@ class UserController {
     try {
       const id = req.path.split('/').pop()
       const users = await User.find({ _id: id })
-      return res.status(200).json(users[0])
+      const usersReturn = {
+        _id: users[0]._id,
+        firstName: users[0].firstName,
+        lastName: users[0].lastName,
+        email: users[0].email
+      }
+      return res.status(200).json(usersReturn)
     } catch (err) {
       return res.status(400).json({ mensagem: 'Usuário não encontrado', erro: err })
     }
