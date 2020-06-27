@@ -15,7 +15,9 @@ class UserController {
         _id: users[0]._id,
         firstName: users[0].firstName,
         lastName: users[0].lastName,
-        email: users[0].email
+        email: users[0].email,
+        imagem: users[0].imagem,
+        pageId: users[0].pageId
       }
       return res.status(200).json(usersReturn)
     } catch (err) {
