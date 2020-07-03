@@ -24,8 +24,16 @@ Para gerar o pacote de produção, rode o comando
 
 ### Users
 
-| Rota          | Método | Descrição                                     |
+| Rotas Users   | Método | Descrição                                     |
 | ------------- | ------ | --------------------------------------------- |
 | /users/:id    | GET    | Lista o usuário pelo id                       |
 | /users/create | POST   | Cria o usuário                                |
 | /users/login  | POST   | Faz o login do usuário e responde com o token |
+
+| Rotas Pages   | Método | Descrição                                     |
+| ------------- | ------ | --------------------------------------------- |
+| /pages/create | POST   | Cria página                                   |
+
+| Rotas Pets    | Método | Descrição                                     |
+| ------------- | ------ | --------------------------------------------- |
+| /pets/create  | POST   | Cria Pets                                     |
