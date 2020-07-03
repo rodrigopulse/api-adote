@@ -22,8 +22,6 @@ Para gerar o pacote de produção, rode o comando
 
 ## Rotas
 
-### Users
-
 | Rotas Users   | Método | Descrição                                     |
 | ------------- | ------ | --------------------------------------------- |
 | /users/:id    | GET    | Lista o usuário pelo id                       |
