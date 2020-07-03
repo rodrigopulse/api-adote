@@ -8,7 +8,7 @@ class PageController {
       const page = await Page.create(req.body)
       return res.status(201).json({ _id: page._id })
     } catch (err) {
-      return res.status(400).json({ mensagem: 'Usuário não criado', erro: err })
+      return res.status(400).json({ mensagem: 'Página não criada', erro: err })
     }
   }
 }
