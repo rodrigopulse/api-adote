@@ -6,6 +6,7 @@ interface PageInterface extends Document {
   description?: string,
   admins?: string[],
   logo?: string,
+  cover?: string,
   facebook?: string,
   instagram?: string,
   youtube?: string
@@ -23,6 +24,7 @@ const PageSchema = new Schema({
   description: String,
   admins: Array,
   logo: String,
+  cover: String,
   facebook: String,
   instagram: String,
   youtube: String

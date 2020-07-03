@@ -21,8 +21,7 @@ const UserSchema = new Schema({
   firstName: String,
   lastName: String,
   password: String,
-  image: String,
-  pageId: String
+  image: String
 }, {
   timestamps: true
 })
