@@ -6,6 +6,9 @@ interface PageInterface extends Document {
   description?: string,
   admins?: string[],
   logo?: string,
+  facebook?: string,
+  instagram?: string,
+  youtube?: string
 }
 
 const PageSchema = new Schema({
@@ -19,7 +22,10 @@ const PageSchema = new Schema({
   subtitle: String,
   description: String,
   admins: Array,
-  logo: String
+  logo: String,
+  facebook: String,
+  instagram: String,
+  youtube: String
 }, {
   timestamps: true
 })
